@@ -13,6 +13,7 @@ export class HelloComponent implements OnInit {
   count: number;
   input: string;
   visible: boolean;
+  data: string[];
 
   constructor() {
     setInterval(() => {
@@ -31,6 +32,7 @@ export class HelloComponent implements OnInit {
     this.styleClass = 'red';
     this.count = 0;
     this.visible = true;
+    this.data = ['1', '2', '3'];
   }
 
   toDay() {
