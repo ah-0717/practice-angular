@@ -11,6 +11,7 @@ export class HelloComponent implements OnInit {
   now: Date;
   styleClass: string;
   count: number;
+  input: string;
 
   constructor() {
     setInterval(() => {
@@ -36,6 +37,11 @@ export class HelloComponent implements OnInit {
 
   doClick() {
     this.message = ++this.count + '回、クリックしました。';
+  }
+
+  doType(val: string) {
+    this.input = val;
+    this.message = 'you type:' + this.input;
   }
 
 }
