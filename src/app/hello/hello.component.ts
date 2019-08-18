@@ -14,6 +14,7 @@ export class HelloComponent implements OnInit {
   input: string;
   visible: boolean;
   data: string[];
+  switch: string;
 
   constructor() {
     setInterval(() => {
@@ -50,5 +51,9 @@ export class HelloComponent implements OnInit {
 
   ngIfClick() {
     this.visible = !this.visible;
+  }
+
+  doSelect(val: string) {
+    this.switch = val;
   }
 }

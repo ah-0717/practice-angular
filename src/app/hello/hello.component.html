@@ -11,4 +11,15 @@
   <ul>
     <li *ngFor="let item of data">{{ item }}</li>
   </ul>
+  <div [ngSwitch]="switch">
+    <p *ngSwitchCase="'one'">First paragrah!</p>
+    <p *ngSwitchCase="'two'">Second paragrah!</p>
+    <p *ngSwitchCase="'three'">Third paragrah!</p>
+    <p *ngSwitchDefault>Default paragrah!</p>
+  </div>
+  <select #sel (change)="doSelect(sel.value)">
+    <option>one</option>
+    <option>two</option>
+    <option>three</option>
+  </select>
 </div>
