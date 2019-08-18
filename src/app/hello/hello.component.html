@@ -24,4 +24,9 @@
     <option>two</option>
     <option>three</option>
   </select>
+
+  <p [ngClass]="nowClass">ngClass:{{ngClassMsg}}</p>
+  <input type="checkbox" #ck1 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Thin
+  <input type="checkbox" #ck2 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Large
+  <input type="checkbox" #ck3 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Frame
 </div>

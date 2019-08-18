@@ -15,6 +15,8 @@ export class HelloComponent implements OnInit {
   visible: boolean;
   data: string[];
   switch: string;
+  ngClassMsg: string;
+  nowClass: any;
 
   constructor() {
     setInterval(() => {
@@ -34,6 +36,12 @@ export class HelloComponent implements OnInit {
     this.count = 0;
     this.visible = true;
     this.data = ['1', '2', '3'];
+    this.ngClassMsg = 'false,false,false';
+    this.nowClass = {
+      thin: false,
+      large: false,
+      frame: false
+    };
   }
 
   toDay() {
@@ -55,5 +63,12 @@ export class HelloComponent implements OnInit {
 
   doSelect(val: string) {
     this.switch = val;
+  }
+
+  check(c1: boolean, c2: boolean, c3: boolean) {
+    this.nowClass.thin = c1;
+    this.nowClass.large = c2;
+    this.nowClass.frame = c3;
+    this.ngClassMsg = `${c1},${c2},${c3}`
   }
 }
