@@ -29,4 +29,9 @@
   <input type="checkbox" #ck1 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Thin
   <input type="checkbox" #ck2 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Large
   <input type="checkbox" #ck3 (change)="check(ck1.checked, ck2.checked, ck3.checked)">Frame
+
+  <p [ngStyle]="nowStyle">ngStyle:{{ ngStyleMsg }}</p>
+  <input type="text" #in1 (change)="checkStyle(in1.value, in2.value, in3.value)"><br>
+  <input type="text" #in2 (change)="checkStyle(in1.value, in2.value, in3.value)"><br>
+  <input type="text" #in3 (change)="checkStyle(in1.value, in2.value, in3.value)"><br>
 </div>

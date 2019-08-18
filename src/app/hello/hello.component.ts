@@ -17,6 +17,8 @@ export class HelloComponent implements OnInit {
   switch: string;
   ngClassMsg: string;
   nowClass: any;
+  ngStyleMsg: string;
+  nowStyle: any;
 
   constructor() {
     setInterval(() => {
@@ -42,6 +44,12 @@ export class HelloComponent implements OnInit {
       large: false,
       frame: false
     };
+    this.ngStyleMsg = 'false,false,false';
+    this.nowStyle = {
+      'border-style': '',
+      'border-width': '',
+      'border-color': ''
+    }
   }
 
   toDay() {
@@ -70,5 +78,12 @@ export class HelloComponent implements OnInit {
     this.nowClass.large = c2;
     this.nowClass.frame = c3;
     this.ngClassMsg = `${c1},${c2},${c3}`
+  }
+
+  checkStyle(in1: string, in2: string, in3: string) {
+    this.nowStyle['border-style'] = in1;
+    this.nowStyle['border-width'] = in2 + 'px';
+    this.nowStyle['border-color'] = in3;
+    this.ngStyleMsg = JSON.stringify(this.nowStyle);
   }
 }
