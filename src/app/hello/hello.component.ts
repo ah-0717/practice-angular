@@ -10,6 +10,7 @@ export class HelloComponent implements OnInit {
   message: string;
   now: Date;
   styleClass: string;
+  count: number;
 
   constructor() {
     setInterval(() => {
@@ -26,10 +27,15 @@ export class HelloComponent implements OnInit {
     this.title = 'hello-app';
     this.message = 'first component';
     this.styleClass = 'red';
+    this.count = 0;
   }
 
   toDay() {
     return this.now.toLocaleString();
+  }
+
+  doClick() {
+    this.message = ++this.count + '回、クリックしました。';
   }
 
 }
