@@ -3,6 +3,8 @@
   <p>{{ message }}</p>
   <p>{{ toDay() }}</p>
   <p [class]="styleClass">{{ message }}</p>
+  <p [style.font-size.pt]="36" [style.color]="'#F00'">{{ message }}</p>
+  <p [class]="styleClass">{{ message }}</p>
   <button (click)="doClick()">Click</button>
   <input type="text" #field1 (keyup)="doType(field1.value)">
 
