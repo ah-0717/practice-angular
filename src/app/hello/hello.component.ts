@@ -20,6 +20,8 @@ export class HelloComponent implements OnInit {
   ngStyleMsg: string;
   nowStyle: any;
 
+  text1: string;
+
   constructor() {
     setInterval(() => {
      this.now = new Date();
@@ -49,7 +51,9 @@ export class HelloComponent implements OnInit {
       'border-style': '',
       'border-width': '',
       'border-color': ''
-    }
+    };
+
+    this.text1 = '';
   }
 
   toDay() {
