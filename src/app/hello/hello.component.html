@@ -5,4 +5,7 @@
   <p [class]="styleClass">{{ message }}</p>
   <button (click)="doClick()">Click</button>
   <input type="text" #field1 (keyup)="doType(field1.value)">
+
+  <p *ngIf="visible" (click)="ngIfClick()" class="red">This is True message.</p>
+  <p *ngIf="visible === false" (click)="ngIfClick()">This is False message.</p>
 </div>

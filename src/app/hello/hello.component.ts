@@ -12,6 +12,7 @@ export class HelloComponent implements OnInit {
   styleClass: string;
   count: number;
   input: string;
+  visible: boolean;
 
   constructor() {
     setInterval(() => {
@@ -29,6 +30,7 @@ export class HelloComponent implements OnInit {
     this.message = 'first component';
     this.styleClass = 'red';
     this.count = 0;
+    this.visible = true;
   }
 
   toDay() {
@@ -44,4 +46,7 @@ export class HelloComponent implements OnInit {
     this.message = 'you type:' + this.input;
   }
 
+  ngIfClick() {
+    this.visible = !this.visible;
+  }
 }
