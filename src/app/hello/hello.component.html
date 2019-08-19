@@ -37,4 +37,6 @@
   <hr>
   <p>TYPE:{{ text1 }}</p>
   <input type="text" [(ngModel)]="text1">
+  <p>reactiveFormTYPE:{{ myControl.value }}</p>
+  <input type="text" [formControl]="myControl">
 </div>

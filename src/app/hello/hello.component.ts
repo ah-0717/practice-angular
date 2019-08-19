@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -21,6 +22,7 @@ export class HelloComponent implements OnInit {
   nowStyle: any;
 
   text1: string;
+  myControl: FormControl;
 
   constructor() {
     setInterval(() => {
@@ -53,7 +55,9 @@ export class HelloComponent implements OnInit {
       'border-color': ''
     };
 
+    // 双方向
     this.text1 = '';
+    this.myControl = new FormControl('ok.');
   }
 
   toDay() {
