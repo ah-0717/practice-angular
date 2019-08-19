@@ -23,6 +23,8 @@ export class HelloComponent implements OnInit {
 
   text1: string;
   myControl: FormControl;
+  myFormGroupMsg: string;
+  myFormGroup: FormGroup;
 
   constructor() {
     setInterval(() => {
@@ -58,6 +60,12 @@ export class HelloComponent implements OnInit {
     // 双方向
     this.text1 = '';
     this.myControl = new FormControl('ok.');
+    this.myFormGroupMsg = 'FormGroupMsg';
+    this.myFormGroup = new FormGroup({
+      name: new FormControl(''),
+      mail: new FormControl(''),
+      age: new FormControl(0),
+    });
   }
 
   toDay() {
@@ -97,5 +105,10 @@ export class HelloComponent implements OnInit {
 
   doFormControlClick() {
     this.message = `「${this.myControl.value}」と書きました。`;
+  }
+
+  onSubmit() {
+    const result = this.myFormGroup.value;
+    this.myFormGroupMsg = JSON.stringify(result);
   }
 }

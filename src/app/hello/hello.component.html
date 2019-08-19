@@ -40,4 +40,25 @@
   <p>reactiveFormTYPE:{{ myControl.value }}</p>
   <input type="text" [formControl]="myControl">
   <button (click)="doFormControlClick()">Click</button>
+  <p>{{myFormGroupMsg}}</p>
+  <form [formGroup]="myFormGroup" (ngSubmit)="onSubmit()">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><input type="text" formControlName="name"></td>
+      </tr>
+      <tr>
+        <th>Mail</th>
+        <td><input type="text" formControlName="mail"></td>
+      </tr>
+      <tr>
+        <th>age</th>
+        <td><input type="number" formControlName="age"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><input type="submit" value="click"></td>
+      </tr>
+    </table>
+  </form>
 </div>
