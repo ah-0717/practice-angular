@@ -27,6 +27,7 @@ export class HelloComponent implements OnInit {
   myFormGroup: FormGroup;
   myFormGroupMsg2: string;
   myFormGroup2: FormGroup;
+  myFormGroupMsg3: string;
 
   constructor() {
     setInterval(() => {
@@ -72,6 +73,7 @@ export class HelloComponent implements OnInit {
     this.myFormGroup2 = new FormGroup({
       control: new FormControl()
     });
+    this.myFormGroupMsg3 = 'myFormGroupMsg3';
   }
 
   toDay() {
@@ -118,5 +120,9 @@ export class HelloComponent implements OnInit {
     this.myFormGroupMsg = JSON.stringify(result);
     const result2 = this.myFormGroup2.value;
     this.myFormGroupMsg2 = JSON.stringify(result2);
+  }
+
+  onSubmit2(val) {
+    this.myFormGroupMsg3 = JSON.stringify(val);
   }
 }

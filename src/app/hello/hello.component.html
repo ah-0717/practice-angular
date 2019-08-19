@@ -78,4 +78,26 @@
       <input type="submit" value="click">
     </div>
   </form>
+
+  <p>{{ myFormGroupMsg3 }}</p>
+  <form #f="ngForm" (ngSubmit)="onSubmit2(f.value)">
+      <table>
+          <tr>
+            <th>Name</th>
+            <td><input type="text" name="name" ngModel></td>
+          </tr>
+          <tr>
+            <th>Mail</th>
+            <td><input type="text" name="mail" ngModel></td>
+          </tr>
+          <tr>
+            <th>age</th>
+            <td><input type="number" name="age" ngModel></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><input type="submit" value="click"></td>
+          </tr>
+        </table>
+  </form>
 </div>
