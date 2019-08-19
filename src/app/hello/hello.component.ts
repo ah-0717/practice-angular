@@ -94,4 +94,8 @@ export class HelloComponent implements OnInit {
     this.nowStyle['border-color'] = in3;
     this.ngStyleMsg = JSON.stringify(this.nowStyle);
   }
+
+  doFormControlClick() {
+    this.message = `「${this.myControl.value}」と書きました。`;
+  }
 }
