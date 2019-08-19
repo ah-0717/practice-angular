@@ -61,4 +61,21 @@
       </tr>
     </table>
   </form>
+
+  <p>{{ myFormGroupMsg2 }}</p>
+  <form [formGroup]="myFormGroup2" (ngSubmit)="onSubmit()" >
+    <div>
+      <label><input type="checkbox" formControlName="control">Check Box</label>
+    </div>
+    <input type="radio" value="a" formControlName="control">a
+    <input type="radio" value="b" formControlName="control">b
+    <select formControlName="control">
+      <option value="a">あ</option>
+      <option>i</option>
+      <option value="う">u</option>
+    </select>
+    <div>
+      <input type="submit" value="click">
+    </div>
+  </form>
 </div>
