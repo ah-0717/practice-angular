@@ -100,4 +100,26 @@
           </tr>
         </table>
   </form>
+
+  <p>{{ myFormGroupMsg4 }}</p>
+  <form [(formGroup)]="myFormGroup4" (ngSubmit)="onSubmit3()" >
+    <table>
+        <tr>
+          <th>Name</th>
+          <td><input type="text" formControlName="name"></td>
+        </tr>
+        <tr>
+          <th>Mail</th>
+          <td><input type="text" formControlName="mail"></td>
+        </tr>
+        <tr>
+          <th>age</th>
+          <td><input type="number" formControlName="age"></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><input type="submit" value="click"></td>
+        </tr>
+      </table>
+  </form>
 </div>

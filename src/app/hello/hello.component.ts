@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -28,8 +28,10 @@ export class HelloComponent implements OnInit {
   myFormGroupMsg2: string;
   myFormGroup2: FormGroup;
   myFormGroupMsg3: string;
+  myFormGroup4: FormGroup;
+  myFormGroupMsg4: string;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     setInterval(() => {
      this.now = new Date();
     }, 1000);
@@ -74,6 +76,12 @@ export class HelloComponent implements OnInit {
       control: new FormControl()
     });
     this.myFormGroupMsg3 = 'myFormGroupMsg3';
+    this.myFormGroupMsg4 = 'myFormGroupMsg4';
+    this.myFormGroup4 = this.fb.group({
+      name: [''],
+      mail: [''],
+      age: [0],
+    });
   }
 
   toDay() {
@@ -125,4 +133,10 @@ export class HelloComponent implements OnInit {
   onSubmit2(val) {
     this.myFormGroupMsg3 = JSON.stringify(val);
   }
+
+  onSubmit3() {
+    const result = this.myFormGroup4.value;
+    this.myFormGroupMsg4 = JSON.stringify(result);
+  }
+
 }
