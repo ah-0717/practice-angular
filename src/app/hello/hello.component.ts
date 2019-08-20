@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -67,9 +67,9 @@ export class HelloComponent implements OnInit {
     this.myControl = new FormControl('ok.');
     this.myFormGroupMsg = 'FormGroupMsg';
     this.myFormGroup = new FormGroup({
-      name: new FormControl(''),
-      mail: new FormControl(''),
-      age: new FormControl(0),
+      name: new FormControl('', [Validators.required]),
+      mail: new FormControl('', [Validators.email]),
+      age: new FormControl(0, [Validators.min(1), Validators.max(150)]),
     });
     this.myFormGroupMsg2 = 'myFormGroupMsg2';
     this.myFormGroup2 = new FormGroup({
@@ -78,9 +78,9 @@ export class HelloComponent implements OnInit {
     this.myFormGroupMsg3 = 'myFormGroupMsg3';
     this.myFormGroupMsg4 = 'myFormGroupMsg4';
     this.myFormGroup4 = this.fb.group({
-      name: [''],
-      mail: [''],
-      age: [0],
+      name1: ['', [Validators.required]],
+      mail1: ['', [Validators.email]],
+      age1: [0, [Validators.min(1), Validators.max(150)]],
     });
   }
 
@@ -123,9 +123,37 @@ export class HelloComponent implements OnInit {
     this.message = `「${this.myControl.value}」と書きました。`;
   }
 
+  get name() {
+    return this.myFormGroup.get('name');
+  }
+
+  get mail() {
+    return this.myFormGroup.get('mail');
+  }
+
+  get age() {
+    return this.myFormGroup.get('age');
+  }
+
+  get name1() {
+    return this.myFormGroup4.get('name1');
+  }
+
+  get mail1() {
+    return this.myFormGroup4.get('mail1');
+  }
+
+  get age1() {
+    return this.myFormGroup4.get('age1');
+  }
+
   onSubmit() {
-    const result = this.myFormGroup.value;
-    this.myFormGroupMsg = JSON.stringify(result);
+    if (this.myFormGroup.invalid) {
+      this.myFormGroupMsg = 'VALIDATION_ERROR.';
+    } else {
+      const result = this.myFormGroup.value;
+      this.myFormGroupMsg = JSON.stringify(result);
+    }
     const result2 = this.myFormGroup2.value;
     this.myFormGroupMsg2 = JSON.stringify(result2);
   }
@@ -135,8 +163,12 @@ export class HelloComponent implements OnInit {
   }
 
   onSubmit3() {
-    const result = this.myFormGroup4.value;
-    this.myFormGroupMsg4 = JSON.stringify(result);
+    if (this.myFormGroup4.invalid) {
+      this.myFormGroupMsg4 = 'VALIDATION_ERROR.';
+    } else {
+      const result = this.myFormGroup4.value;
+      this.myFormGroupMsg4 = JSON.stringify(result);
+    }
   }
 
 }

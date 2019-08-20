@@ -106,19 +106,24 @@
     <table>
         <tr>
           <th>Name</th>
-          <td><input type="text" formControlName="name"></td>
+          <!-- <div *ngIf="name1.invalid">Nameは必須項目です。</div> -->
+          <div *ngIf="name1.errors != null && name1.errors.required != null">Nameは必須項目です。</div>
+          <div><td><input type="text" formControlName="name1"></td></div>
         </tr>
         <tr>
           <th>Mail</th>
-          <td><input type="text" formControlName="mail"></td>
+          <div *ngIf="mail1.errors != null && mail1.errors.email != null">メールアドレスが必要です。</div>
+          <div><td><input type="text" formControlName="mail1"></td></div>
         </tr>
         <tr>
           <th>age</th>
-          <td><input type="number" formControlName="age"></td>
+          <div *ngIf="age1.errors != null && age1.errors.min != null">1歳以上を入力してください。</div>
+          <div *ngIf="age1.errors != null && age1.errors.max != null">150歳以下を入力してください。</div>
+          <div><td><input type="number" formControlName="age1"></td></div>
         </tr>
         <tr>
           <th></th>
-          <td><input type="submit" value="click"></td>
+          <td><input [disabled]="myFormGroup4.invalid" type="submit" value="click"></td>
         </tr>
       </table>
   </form>
