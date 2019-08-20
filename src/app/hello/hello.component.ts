@@ -78,9 +78,9 @@ export class HelloComponent implements OnInit {
     this.myFormGroupMsg3 = 'myFormGroupMsg3';
     this.myFormGroupMsg4 = 'myFormGroupMsg4';
     this.myFormGroup4 = this.fb.group({
-      name1: ['', [Validators.required]],
+      name1: ['', [Validators.required, alpha]],
       mail1: ['', [Validators.email]],
-      age1: [0, [Validators.min(1), Validators.max(150)]],
+      age1: [0, [Validators.min(1), Validators.max(150), even]],
     });
   }
 
@@ -170,5 +170,17 @@ export class HelloComponent implements OnInit {
       this.myFormGroupMsg4 = JSON.stringify(result);
     }
   }
+}
 
+function alpha(c: FormControl) {
+  const REGPATTERN = /^[a-zA-Z]+$/;
+  if (REGPATTERN.test(c.value)) {
+    return null;
+  } else {
+    return {alpha: {valid: false}};
+  }
+}
+
+function even(c: FormControl) {
+  return c.value % 2 === 0 ? null : {even: {valid: false}};
 }
