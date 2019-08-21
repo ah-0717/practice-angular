@@ -1,0 +1,10 @@
+<div class="container">
+  <p class="message">{{ content }}</p>
+  <ul>
+    <li *ngFor="let item of content2">{{ item }}</li>
+  </ul>
+  <hr>
+  <ul (click)="doClick()">
+      <li *ngFor="let item of _pContent">{{ item }}</li>
+    </ul>
+</div>

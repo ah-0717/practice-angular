@@ -31,6 +31,10 @@ export class HelloComponent implements OnInit {
   myFormGroup4: FormGroup;
   myFormGroupMsg4: string;
 
+  appMessage: string;
+  appMessage2: string[];
+  appMessage3: string;
+
   constructor(private fb: FormBuilder) {
     setInterval(() => {
      this.now = new Date();
@@ -82,6 +86,10 @@ export class HelloComponent implements OnInit {
       mail1: ['', [Validators.email]],
       age1: [0, [Validators.min(1), Validators.max(150), even]],
     });
+
+    this.appMessage = 'app-messageコンポーネント';
+    this.appMessage2 = ['a', 'b', 'c'];
+    this.appMessage3 = 'ア,イ,ウ,エ,オ';
   }
 
   toDay() {
