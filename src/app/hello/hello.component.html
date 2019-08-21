@@ -137,4 +137,13 @@
       <button (click)="list1.pop()">pop</button>
     </div>
   <app-message #list1 [content]="appMessage" [content2]="appMessage2" [_content]="appMessage3" [content3]="appMessage2" (action)="doMsgCompClick($event)"></app-message>
+
+  <div>
+      <input type="text" [(ngModel)]="input2">
+      <button (click)="push()">push</button>
+      <button (click)="pop()">pop</button>
+    </div>
+  <app-message [content2]="appMessage2" (action)="doMsgCompClick($event)"></app-message>
+
+
 </div>

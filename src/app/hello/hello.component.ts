@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MessageComponent } from './../message/message.component';
 
 @Component({
   selector: 'app-hello',
@@ -36,6 +37,9 @@ export class HelloComponent implements OnInit {
   appMessage3: string;
   lastTarget: any;
   lastColor: string;
+  input2: string;
+  @ViewChild(MessageComponent, {static: false})
+  private messageComponent: MessageComponent;
 
   constructor(private fb: FormBuilder) {
     setInterval(() => {
@@ -92,6 +96,8 @@ export class HelloComponent implements OnInit {
     this.appMessage = 'app-messageコンポーネント';
     this.appMessage2 = ['a', 'b', 'c'];
     this.appMessage3 = 'ア,イ,ウ,エ,オ';
+
+    this.input2 = '';
   }
 
   toDay() {
@@ -190,6 +196,18 @@ export class HelloComponent implements OnInit {
     this.lastColor = event.target.style.color;
     event.target.style.color = 'white';
     event.target.style.backgroundColor = 'red';
+  }
+
+  push() {
+    if (this.input2 == '') {
+      alert('テキストを入力してください。');
+      return;
+    }
+    this.messageComponent.push(this.input2);
+  }
+
+  pop() {
+    this.messageComponent.pop();
   }
 }
 
