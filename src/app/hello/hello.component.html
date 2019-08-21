@@ -131,5 +131,10 @@
   </form>
 
   <hr>
-  <app-message [content]="appMessage" [content2]="appMessage2" [_content]="appMessage3" (action)="doMsgCompClick($event)"></app-message>
+  <div>
+      <input #input1 type="text">
+      <button (click)="list1.push(input1.value)">push</button>
+      <button (click)="list1.pop()">pop</button>
+    </div>
+  <app-message #list1 [content]="appMessage" [content2]="appMessage2" [_content]="appMessage3" [content3]="appMessage2" (action)="doMsgCompClick($event)"></app-message>
 </div>

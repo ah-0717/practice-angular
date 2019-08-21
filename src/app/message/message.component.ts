@@ -10,6 +10,7 @@ export class MessageComponent implements OnInit {
   @Input() content2: string[];
   private _pContent: string[];
   @Output() action = new EventEmitter<MouseEvent>();
+  @Input() content3: string[];
 
   constructor() { }
 
@@ -31,5 +32,13 @@ export class MessageComponent implements OnInit {
 
   doAction(event) {
     this.action.emit(event);
+  }
+
+  push(item: string) {
+    this.content3.push(item);
+  }
+
+  pop() {
+    this.content3.pop();
   }
 }
