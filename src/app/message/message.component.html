@@ -6,5 +6,9 @@
   <hr>
   <ul (click)="doClick()">
       <li *ngFor="let item of _pContent">{{ item }}</li>
-    </ul>
+  </ul>
+  <hr>
+  <ul (click)="doAction($event)">
+      <li *ngFor="let item of _pContent">{{ item }}</li>
+  </ul>
 </div>

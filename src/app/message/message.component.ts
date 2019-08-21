@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -9,6 +9,7 @@ export class MessageComponent implements OnInit {
   @Input() content: string;
   @Input() content2: string[];
   private _pContent: string[];
+  @Output() action = new EventEmitter<MouseEvent>();
 
   constructor() { }
 
@@ -26,5 +27,9 @@ export class MessageComponent implements OnInit {
 
   doClick() {
     this._pContent.pop();
+  }
+
+  doAction(event) {
+    this.action.emit(event);
   }
 }
