@@ -1,3 +1,4 @@
+import { MycheckService } from './../mycheck.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageComponent } from './../message/message.component';
@@ -41,7 +42,9 @@ export class HelloComponent implements OnInit {
   @ViewChild(MessageComponent, {static: false})
   private messageComponent: MessageComponent;
 
-  constructor(private fb: FormBuilder) {
+  message2: string;
+
+  constructor(private fb: FormBuilder, private service: MycheckService) {
     setInterval(() => {
      this.now = new Date();
     }, 1000);
@@ -98,6 +101,10 @@ export class HelloComponent implements OnInit {
     this.appMessage3 = 'ア,イ,ウ,エ,オ';
 
     this.input2 = '';
+
+    // サービス
+    this.service.name = 'aaa';
+    this.message2 = this.service.hello();
   }
 
   toDay() {

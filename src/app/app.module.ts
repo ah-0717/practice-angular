@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
+import { MycheckService } from './mycheck.service';
 
 @NgModule({
   declarations: [
@@ -24,4 +25,8 @@ import { MystyleDirective } from './mystyle.directive';
   providers: [],
   bootstrap: [HelloComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private service: MycheckService) {
+    service.name = 'fuga';
+  }
+}
