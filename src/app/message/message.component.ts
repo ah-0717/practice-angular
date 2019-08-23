@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MycheckService } from '../mycheck.service';
 
@@ -15,12 +16,13 @@ export class MessageComponent implements OnInit {
   @Input() content3: string[];
   @Input() sContent: string[];
 
-  constructor(private service: MycheckService) {
+  constructor(private service: MycheckService, private route: ActivatedRoute) {
     this.sContent = [];
     service.pushData('hello data');
   }
 
   ngOnInit() {
+    this.service.pushData(`params: ${JSON.stringify(this.route.snapshot.paramMap)}`);
     // this.sContent.push(this.service.hello());
     this.sContent = this.service.dataList;
   }

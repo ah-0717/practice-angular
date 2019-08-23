@@ -1,8 +1,9 @@
 <nav>
   <div>
     <a routerLink="">Home</a>|
-    <a routerLink="hello">Hello</a>|
-    <a routerLink="msg">Message</a>
+    <a [routerLink]="['/hello', {name: 'taro'}]">Hello (マトリクスパラメータ)</a>|
+    <a [routerLink]="['/hello']" [queryParams]="{id: 123, name: 'taro'}">Hello (クエリパラメータ)</a>|
+    <a [routerLink]="['/msg', '123']">Message</a>
   </div>
 </nav>
 <div class="content">

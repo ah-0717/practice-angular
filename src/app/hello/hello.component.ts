@@ -2,6 +2,7 @@ import { MycheckService } from './../mycheck.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageComponent } from './../message/message.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hello',
@@ -45,7 +46,9 @@ export class HelloComponent implements OnInit {
 
   message2: string | number;
 
-  constructor(private fb: FormBuilder, private service: MycheckService) {
+  message3: string;
+
+  constructor(private fb: FormBuilder, private service: MycheckService, private route: ActivatedRoute) {
     setInterval(() => {
      this.now = new Date();
     }, 1000);
@@ -109,6 +112,9 @@ export class HelloComponent implements OnInit {
     this.service.name = 'aaa';
     // this.message2 = this.service.hello();
     this.message2 = this.service.dataSize;
+
+    this.message3 =
+      `paramMap: ${JSON.stringify(this.route.snapshot.paramMap)} queryParamMap: ${JSON.stringify(this.route.snapshot.queryParamMap)}`;
   }
 
   toDay() {
