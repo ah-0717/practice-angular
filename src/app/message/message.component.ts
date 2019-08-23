@@ -4,7 +4,8 @@ import { MycheckService } from '../mycheck.service';
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css']
+  styleUrls: ['./message.component.css'],
+  providers: [MycheckService]
 })
 export class MessageComponent implements OnInit {
   @Input() content: string;
@@ -16,10 +17,12 @@ export class MessageComponent implements OnInit {
 
   constructor(private service: MycheckService) {
     this.sContent = [];
+    service.pushData('hello data');
   }
 
   ngOnInit() {
-    this.sContent.push(this.service.hello());
+    // this.sContent.push(this.service.hello());
+    this.sContent = this.service.dataList;
   }
 
   @Input()

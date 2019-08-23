@@ -27,6 +27,10 @@ import { MycheckService } from './mycheck.service';
 })
 export class AppModule {
   constructor(private service: MycheckService) {
+    // シングルトンである
     service.name = 'fuga';
+    service.pushData('aaaaa');
+    service.pushData('bbbbb');
+    service.pushData('ccccc');
   }
 }

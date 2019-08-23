@@ -6,7 +6,8 @@ import { MessageComponent } from './../message/message.component';
 @Component({
   selector: 'app-hello',
   templateUrl: './hello.component.html',
-  styleUrls: ['./hello.component.css']
+  styleUrls: ['./hello.component.css'],
+  providers: [MycheckService]
 })
 export class HelloComponent implements OnInit {
   title: string;
@@ -42,7 +43,7 @@ export class HelloComponent implements OnInit {
   @ViewChild(MessageComponent, {static: false})
   private messageComponent: MessageComponent;
 
-  message2: string;
+  message2: string | number;
 
   constructor(private fb: FormBuilder, private service: MycheckService) {
     setInterval(() => {
@@ -53,6 +54,8 @@ export class HelloComponent implements OnInit {
       this.styleClass = this.styleClass === 'red' ? '' : 'red';
      }, 1000);
 
+    service.pushData('1');
+    service.pushData('2');
   }
 
   ngOnInit() {
@@ -104,7 +107,8 @@ export class HelloComponent implements OnInit {
 
     // サービス
     this.service.name = 'aaa';
-    this.message2 = this.service.hello();
+    // this.message2 = this.service.hello();
+    this.message2 = this.service.dataSize;
   }
 
   toDay() {
