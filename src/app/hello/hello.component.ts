@@ -3,6 +3,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageComponent } from './../message/message.component';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+class MyData {
+  data: string;
+}
 
 @Component({
   selector: 'app-hello',
@@ -47,8 +52,9 @@ export class HelloComponent implements OnInit {
   message2: string | number;
 
   message3: string;
+  httpMessage: string;
 
-  constructor(private fb: FormBuilder, private service: MycheckService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private service: MycheckService, private route: ActivatedRoute, private client: HttpClient) {
     setInterval(() => {
      this.now = new Date();
     }, 1000);
@@ -115,6 +121,9 @@ export class HelloComponent implements OnInit {
 
     this.message3 =
       `paramMap: ${JSON.stringify(this.route.snapshot.paramMap)} queryParamMap: ${JSON.stringify(this.route.snapshot.queryParamMap)}`;
+
+    this.httpMessage = '';
+    setTimeout(() => this.getData(), 5000);
   }
 
   toDay() {
@@ -225,6 +234,12 @@ export class HelloComponent implements OnInit {
 
   pop() {
     this.messageComponent.pop();
+  }
+
+  getData() {
+    this.client.get('./assets/data.json').subscribe((result: MyData) => {
+      this.httpMessage = 'data: ' + result.data;
+    });
   }
 }
 
