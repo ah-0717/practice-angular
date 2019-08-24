@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MycheckService } from '../mycheck.service';
@@ -15,6 +16,8 @@ export class MessageComponent implements OnInit {
   @Output() action = new EventEmitter<MouseEvent>();
   @Input() content3: string[];
   @Input() sContent: string[];
+  input: FormControl;
+  httpMessage: string;
 
   constructor(private service: MycheckService, private route: ActivatedRoute) {
     this.sContent = [];
@@ -25,6 +28,8 @@ export class MessageComponent implements OnInit {
     this.service.pushData(`params: ${JSON.stringify(this.route.snapshot.paramMap)}`);
     // this.sContent.push(this.service.hello());
     this.sContent = this.service.dataList;
+    this.input = new FormControl('');
+    this.httpMessage = 'mydata list';
   }
 
   @Input()
@@ -59,5 +64,19 @@ export class MessageComponent implements OnInit {
 
   pop2() {
     this.sContent.pop();
+  }
+
+  getMyData() {
+    return this.service.myData;
+  }
+
+  getMyDataList() {
+    return this.service.myDataList;
+  }
+
+  doHttpAction() {
+    const n = parseInt(this.input.value);
+    const p = this.service.getMyData(n);
+    this.httpMessage = JSON.stringify(p);
   }
 }

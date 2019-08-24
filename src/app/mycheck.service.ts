@@ -1,4 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+class MyData {
+  data: string;
+  list: Person[] = [];
+}
+
+class Person {
+  name: string;
+  mail: string;
+  tel: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -6,10 +18,14 @@ import { Injectable } from '@angular/core';
 export class MycheckService {
   private _name: string;
   private data: string[];
+  private mydata: MyData = new MyData();
 
-  constructor() {
+  constructor(private client: HttpClient) {
    this._name = '(no-name)';
    this.data = [];
+   this.client.get('./assets/data.json').subscribe((result: MyData) => {
+    this.mydata = result;
+   });
   }
 
   get name() {
@@ -46,5 +62,21 @@ export class MycheckService {
 
   hello() {
     return 'Hello, ' + this._name;
+  }
+
+  getMyData(n: number) {
+    return this.mydata.list[n];
+  }
+
+  get myDataSize() {
+    return this.mydata.list.length;
+  }
+
+  get myDataList() {
+    return this.mydata.list;
+  }
+
+  get myData() {
+    return this.mydata.data;
   }
 }
