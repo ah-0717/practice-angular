@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { from } from 'rxjs';
 
 class MyData {
   data: string;
@@ -21,11 +22,19 @@ export class MycheckService {
   private mydata: MyData = new MyData();
 
   constructor(private client: HttpClient) {
-   this._name = '(no-name)';
-   this.data = [];
-   this.client.get('./assets/data.json').subscribe((result: MyData) => {
-    this.mydata = result;
-   });
+
+    this._name = '(no-name)';
+    this.data = [];
+    this.client.get('./assets/data.json').subscribe((result: MyData) => {
+      this.mydata = result;
+    });
+    // fetch('./assets/data.json').then(res => {
+    //   res.json().then(val => this.mydata = val);
+    // });
+    // const ob = from(fetch('./assets/data.json'));
+    // ob.subscribe(res => {
+    //   res.json().then(val => this.mydata = val);
+    // });
   }
 
   get name() {
