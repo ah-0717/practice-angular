@@ -1,5 +1,8 @@
 <div style="margin: 10px;">
   <p>{{ httpMessage }}</p>
+  <div><label>
+    <input #check type="checkbox" (change)="updateDate(check.checked)" checked>show data all
+  </label></div>
   <input type="text" [formControl]="input">
   <button (click)="doHttpAction()">click</button>
 </div>

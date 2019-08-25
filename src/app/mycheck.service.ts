@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 class MyData {
   data: string;
@@ -19,15 +20,18 @@ class Person {
 export class MycheckService {
   private _name: string;
   private data: string[];
-  private mydata: MyData = new MyData();
+  // private mydata: MyData = new MyData();
+  private mydata;
 
   constructor(private client: HttpClient) {
 
     this._name = '(no-name)';
     this.data = [];
-    this.client.get('./assets/data.json').subscribe((result: MyData) => {
-      this.mydata = result;
-    });
+    this.updateData(true);
+    this.mydata = new MyData();
+    // this.client.get('./assets/data.json').subscribe((result: MyData) => {
+    //   this.mydata = result;
+    // });
     // fetch('./assets/data.json').then(res => {
     //   res.json().then(val => this.mydata = val);
     // });
@@ -87,5 +91,19 @@ export class MycheckService {
 
   get myData() {
     return this.mydata.data;
+  }
+
+  updateData(f: boolean) {
+    this.client.get('./assets/data.json')
+    .pipe(
+      map((res: Response) => f ? res : null)
+    ).
+    subscribe((result) => {
+      if (result != null) {
+        this.mydata = result;
+      } else {
+        this.mydata = new MyData();
+      }
+    });
   }
 }

@@ -79,4 +79,8 @@ export class MessageComponent implements OnInit {
     const p = this.service.getMyData(n);
     this.httpMessage = JSON.stringify(p);
   }
+
+  updateDate(ck) {
+    this.service.updateData(ck);
+  }
 }
